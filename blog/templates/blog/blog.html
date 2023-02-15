@@ -1,0 +1,62 @@
+{% extends 'core/base.html'%}
+{%block title%}Blog{%endblock%}
+
+{%load static%}
+
+{%block content%}
+
+
+<main id="main">
+
+	<div class="container">
+		<div class="row topspace">
+			{%for b in blogs%}
+				<div class="col-sm-8 col-sm-offset-2">
+																
+					<article class="post">
+						<header class="entry-header">
+							<div class="entry-meta"> 
+								<span class="posted-on"><time class="entry-date published" date="2013-09-27">{{b.published | date:"SHORT_DATE_FORMAT"}}</time></span>			
+							</div>
+							<h1 class="entry-title"><a href="single.html" rel="bookmark">{{b.title}}</a></h1>
+						</header>
+						<div class="entry-content">
+						
+							<p><img alt="" src="{{b.image.url}}"></p>
+						
+							<p align="justify">{{b.content}}</p>
+							<strong> <p align="center">  Autor:  <em>{{b.author}} </em> | Categorias:
+							{% for category in b.categories.all%}
+							<em><a href="{%url 'category' category.id%}">{{category.name}} </a></em>{%if not forloop.last%},{%endif%} {%if forloop.last%}.{%endif%}
+							{%endfor%}
+							 </p></strong>
+							
+						</div>
+						
+					</article>
+					
+					
+				</div>
+			{%endfor%}
+		
+		</div>
+
+		<center class="">
+			<ul class="pagination">
+				<li class="disabled"><a href="">&laquo;</a></li>
+				<li class="active"><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+				<li><a href="">5</a></li>
+				<li><a href="">6</a></li>
+				<li><a href="">&raquo;</a></li>
+			</ul>
+		</center>
+	
+
+	</div>	<!-- /container -->
+
+</main>
+
+{%endblock%}

@@ -1,0 +1,68 @@
+{% extends 'core/base.html'%}
+{%block title%}Blog Personal{%endblock%}
+
+{%load static%}
+
+{%block content%}
+<main id="main">
+
+	<div class="container">
+		
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+															
+ 				<article class="post">
+					<header class="entry-header">
+ 						
+ 						<h1 class="entry-title"><a href="single.html" rel="bookmark">Requiere más informacion, contactanos</a></h1>
+					</header> 
+					<div class="entry-content"> 
+						<p><img alt="" src="{% static 'core/images/mac.jpg' %}"></p>
+						<p align="center">
+							Para intentar darle el mejor servicio posible, estamos siempre dispuestos a escuchar sus dudas y comentarios, porfavor háganoslas saber.
+						</p>
+						
+					</div> 
+				</article><!-- #post-## -->
+
+			</div> 
+		</div> <!-- /row post  -->
+
+		<div id="respond">
+						<h3 id="reply-title">Envíenos su Mensaje</h3>
+						{%if 'ok' in request.GET %}
+							<p><b>Su mensaje se ha enviado, pronto nos comunicaremos con usted.</b></p>
+						{%endif%}
+						<form action="" method="POST">
+						{% csrf_token %}
+								<div class="form-group">
+									<label for="inputName">Nombre:</label>
+									{{form.name}}
+								</div>
+								{{form.name.errors}}
+								<div class="form-group">
+									<label for="inputEmail">Direccion Email: <i class="text-danger">*</i></label>
+									{{form.email}}
+								</div>
+								{{form.mail.errors}}
+								<div class="form-group">
+									<label for="inputComment">Mensaje:</label>
+									{{form.content}}
+								</div>
+								{{form.content.errors}}
+								<div class="row">
+									<div class="col-md-4 text-right">
+									
+										<button type="submit" class="btn btn-action" value="Enviar">Enviar</button>
+									
+									</div>
+								</div>	
+						</form>
+					</div> 
+		<br>
+		<div class="clearfix"></div>
+
+	</div>	<!-- /container -->
+
+</main>
+{%endblock%}

@@ -1,0 +1,47 @@
+{% extends 'core/base.html'%}
+{%block title%}Acerca de Nosotros{%endblock%}
+
+{%load static%}
+
+{%block content%}
+<main id="main">
+
+	<div class="container">
+
+		<div class="row topspace">
+			
+			<!-- Sidebar -->
+			<aside class="col-sm-4 sidebar sidebar-right">
+				{%for a in about%}
+				<ul class="nav text-right nav-side">
+					<li class=" {%if request.path == '/' %} active {%endif%}"><a  href="#ui">{{a.title}}</a></li>
+					<!--
+					<li><a href="#frontend">Frontend development</a></li>
+					<li><a href="#backend">Backend development</a></li>
+					<li><a href="#projects">Side projects</a></li>
+					 -->
+					
+				</ul>
+				{%endfor%}
+			</aside>
+			<!-- /Sidebar -->
+
+			<!-- Article main content -->
+			{%for aa in about%}
+			<article class="col-sm-8 maincontent">
+				
+				<p><img src="{{a.image.url}}" alt="" class="" width="100%" ></p>
+				<a name="ui"></a><h3>{{aa.subtitle}}</h3>
+				
+				<p  align="justify">{{aa.content}}</p>
+			</article>
+			{%endfor%}
+			<!-- /Article -->
+			
+
+		</div>
+	</div>	<!-- /container -->
+	
+</main>
+
+{%endblock%}
